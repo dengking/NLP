@@ -207,3 +207,48 @@ To see how recursion arises from this grammar, consider the following trees. [(1
 | b.   |      | ![tree_images/ch08-tree-7.png](http://www.nltk.org/book/tree_images/ch08-tree-7.png) |
 
 We've only illustrated two levels of recursion here, but there's no upper limit on the depth. You can experiment with parsing sentences that involve more deeply nested structures. Beware that the `RecursiveDescentParser` is unable to handle **left-recursive** productions of the form `X -> X Y`; we will return to this in [4](http://www.nltk.org/book/ch08.html#sec-parsing).
+
+# 4  Parsing With Context Free Grammar
+
+A **parser** processes input sentences according to the productions of a grammar, and builds one or more constituent structures that conform to the grammar. A grammar is a declarative specification of well-formedness — it is actually just a string, not a program. A parser is a procedural interpretation of the grammar. It searches through the space of trees licensed by a grammar to find one that has the required sentence along its fringe.
+
+A parser permits a grammar to be evaluated against a collection of test sentences, helping linguists to discover mistakes in their grammatical analysis. A parser can serve as a model of psycholinguistic processing, helping to explain the difficulties that humans have with processing certain syntactic constructions. Many natural language applications involve parsing at some point; for example, we would expect the natural language questions submitted to a question-answering system to undergo parsing as an initial step.In this section we see two simple parsing algorithms, a top-down method called recursive descent parsing, and a bottom-up method called shift-reduce parsing. We also see some more sophisticated algorithms, a top-down method with bottom-up filtering called **left-corner parsing**, and a **dynamic programming** technique called **chart parsing**.
+
+## 4.1  Recursive Descent Parsing
+
+
+
+## 4.2  Shift-Reduce Parsing
+
+
+
+## 4.3  The Left-Corner Parser
+
+
+
+## 4.4  Well-Formed Substring Tables
+
+
+
+
+
+# 5  Dependencies and Dependency Grammar
+
+# 6  Grammar Development
+
+Parsing builds trees over sentences, according to a phrase structure grammar. Now, all the examples we gave above only involved toy grammars containing a handful of productions. What happens if we try to scale up this approach to deal with realistic corpora of language? In this section we will see how to access treebanks, and look at the challenge of developing broad-coverage grammars.
+
+## 6.1  Treebanks and Grammars
+
+
+
+## 6.2  Pernicious Ambiguity
+
+
+
+## 6.3  Weighted Grammar
+
+
+
+# 7  Summary
+
