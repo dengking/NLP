@@ -1,5 +1,10 @@
 # parser的实现分析
 
+- `tree.py`
+- `probability.py`
+- `grammar.py`
+- parse
+
 ## 功能分析
 
 根据用户指定的grammar，构造parser。
