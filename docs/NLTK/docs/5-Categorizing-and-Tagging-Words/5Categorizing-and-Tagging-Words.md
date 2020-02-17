@@ -1,5 +1,3 @@
-[TOC]
-
 # 5. Categorizing and Tagging Words
 
 Back in elementary school you learnt the difference between nouns, verbs, adjectives, and adverbs. These "word classes" are not just the idle invention of grammarians, but are useful categories for many language processing tasks. As we will see, they arise from simple **analysis** of the **distribution** of words in text. The goal of this chapter is to answer the following questions:
