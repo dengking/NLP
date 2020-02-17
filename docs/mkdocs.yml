@@ -2,4 +2,5 @@ nav:
     - Home: index.md
     - Linguistics: Linguistics
     - NLP: NLP
-    - Software: Software
+    - NLTK: NLTK
+    - spaCy: spaCy
