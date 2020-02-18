@@ -1,7 +1,3 @@
-[TOC]
-
-
-
 # [Performing Sequence Labelling using CRF in Python](http://www.albertauyeung.com/post/python-sequence-labelling-with-crf/)
 
 
