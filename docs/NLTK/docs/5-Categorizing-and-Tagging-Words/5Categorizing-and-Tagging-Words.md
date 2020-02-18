@@ -42,3 +42,5 @@ Let's look at another example, this time including some homonyms:
 
 Notice that *refuse* and *permit* both appear as a present tense verb (`VBP`) and a noun (`NN`). E.g. *refUSE* is a verb meaning "deny," while *REFuse* is a noun meaning "trash" (i.e. they are not homophones). Thus, we need to know which word is being used in order to pronounce the text correctly. (For this reason, text-to-speech systems usually perform POS-tagging.)
 
+
+
