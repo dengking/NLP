@@ -1,0 +1,658 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <link rel="canonical" href="https://dengking.github.io/NLP/NLTK/docs/7-Extracting-Information-from-Text/7-Extracting-Information-from-Text/">
+      
+      
+        <meta name="author" content="DengKing">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>7 Extracting Information from Text - NLP</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../../../../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../../../css/extra.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-27795084-5", "mkdocs.org")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#7-extracting-information-from-text" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://dengking.github.io/NLP" title="NLP" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              NLP
+            </span>
+            <span class="md-header-nav__topic">
+              
+                7 Extracting Information from Text
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/dengking/NLP" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://dengking.github.io/NLP" title="NLP" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    NLP
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/dengking/NLP" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Linguistics
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Linguistics
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Linguistics/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../Linguistics/Part-of-speech/" title="Part-of-speech" class="md-nav__link">
+      Part-of-speech
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      NLP
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        NLP
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../NLP/NLP/" title="NLP" class="md-nav__link">
+      NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Book-Natural-Language-Processing-with-Python
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        Book-Natural-Language-Processing-with-Python
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../NLP/Book-Natural-Language-Processing-with-Python/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../NLP/Task-of-NLP/" title="Task-of-NLP" class="md-nav__link">
+      Task-of-NLP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-4" type="checkbox" id="nav-3-4">
+    
+    <label class="md-nav__link" for="nav-3-4">
+      Part-of-speech-tagging
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-4">
+        Part-of-speech-tagging
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../NLP/Part-of-speech-tagging/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-5" type="checkbox" id="nav-3-5">
+    
+    <label class="md-nav__link" for="nav-3-5">
+      Shallow-parsing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-5">
+        Shallow-parsing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../../NLP/shallow-parsing/Shallow-parsing/" title="Shallow-parsing" class="md-nav__link">
+      Shallow-parsing
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <div class="toc">
+<ul>
+<li><a href="#7-extracting-information-from-text">7. Extracting Information from Text</a></li>
+<li><a href="#1-information-extraction">1  Information Extraction</a><ul>
+<li><a href="#11-information-extraction-architecture">1.1  Information Extraction Architecture</a></li>
+</ul>
+</li>
+<li><a href="#2-chunking">2  Chunking</a><ul>
+<li><a href="#21-noun-phrase-chunking">2.1  Noun Phrase Chunking</a></li>
+<li><a href="#22-tag-patterns">2.2  Tag Patterns</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="7-extracting-information-from-text">7. Extracting Information from Text<a class="headerlink" href="#7-extracting-information-from-text" title="Permanent link">#</a></h1>
+<p>For any given question, it's likely that someone has written the answer down somewhere. The amount of natural language text that is available in electronic form is truly staggering, and is increasing every day. However, the complexity of natural language can make it very difficult to access the information in that text. The state of the art in NLP is still a long way from being able to build general-purpose representations of meaning from unrestricted text. If we instead focus our efforts on a limited set of questions or "entity relations," such as "where are different facilities located," or "who is employed by what company," we can make significant progress. The goal of this chapter is to answer the following questions:</p>
+<ol>
+<li>How can we build a system that extracts structured data, such as tables, from unstructured text?</li>
+<li>What are some robust methods for identifying the entities and relationships described in a text?</li>
+<li>Which corpora are appropriate for this work, and how do we use them for training and evaluating our models?</li>
+</ol>
+<p>Along the way, we'll apply techniques from the last two chapters to the problems of <strong>chunking</strong> and <strong>named-entity recognition</strong>.</p>
+<h1 id="1-information-extraction">1  Information Extraction<a class="headerlink" href="#1-information-extraction" title="Permanent link">#</a></h1>
+<p>Information comes in many shapes and sizes. One important form is <strong>structured data</strong>, where there is a regular and predictable organization of <strong>entities</strong> and <strong>relationships</strong>. For example, we might be interested in the relation between companies and locations. Given a particular company, we would like to be able to identify the locations where it does business; conversely, given a location, we would like to discover which companies do business in that location. If our data is in tabular form, such as the example in <a href="http://www.nltk.org/book/ch07.html#tab-db-locations">1.1</a>, then answering these queries is straightforward.</p>
+<p><strong>Table 1.1</strong>:</p>
+<p>Locations data</p>
+<table>
+<thead>
+<tr>
+<th>OrgName</th>
+<th>LocationName</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Omnicom</td>
+<td>New York</td>
+</tr>
+<tr>
+<td>DDB Needham</td>
+<td>New York</td>
+</tr>
+<tr>
+<td>Kaplan Thaler Group</td>
+<td>New York</td>
+</tr>
+<tr>
+<td>BBDO South</td>
+<td>Atlanta</td>
+</tr>
+<tr>
+<td>Georgia-Pacific</td>
+<td>Atlanta</td>
+</tr>
+</tbody>
+</table>
+<p>Things are more tricky if we try to get similar information out of text. For example, consider the following snippet (from nltk.corpus.ieer, for fileid NYT19980315.0085).</p>
+<blockquote>
+<p>(1)       The fourth Wells account moving to another agency is the packaged paper-products division of Georgia-Pacific Corp., which arrived at Wells only last fall. Like Hertz and the History Channel, it is also leaving for an Omnicom-owned agency, the BBDO South unit of BBDO Worldwide. BBDO South in Atlanta, which handles corporate advertising for Georgia-Pacific, will assume additional duties for brands like Angel Soft toilet tissue and Sparkle paper towels, said Ken Haldin, a spokesman for Georgia-Pacific in Atlanta.</p>
+</blockquote>
+<p>If you read through <a href="http://www.nltk.org/book/ch07.html#ex-ie4">(1)</a>, you will glean the information required to answer the example question. But how do we get a machine to understand enough about <a href="http://www.nltk.org/book/ch07.html#ex-ie4">(1)</a> to return the answers in <a href="http://www.nltk.org/book/ch07.html#tab-db-answers">1.2</a>? This is obviously a much harder task. Unlike <a href="http://www.nltk.org/book/ch07.html#tab-db-locations">1.1</a>, <a href="http://www.nltk.org/book/ch07.html#ex-ie4">(1)</a> contains no <strong>structure</strong> that links organization names with location names.</p>
+<p>One approach to this problem involves building a very general representation of meaning (<a href="http://www.nltk.org/book/ch10.html#chap-semantics">10.</a>). In this chapter we take a different approach, deciding in advance that we will only look for very specific kinds of information in text, such as the relation between organizations and locations. Rather than trying to use text like <a href="http://www.nltk.org/book/ch07.html#ex-ie4">(1)</a> to answer the question directly, we first convert the <strong>unstructured data</strong> of natural language sentences into the <strong>structured data</strong> of <a href="http://www.nltk.org/book/ch07.html#tab-db-locations">1.1</a>. Then we reap the benefits of powerful query tools such as SQL. This method of getting meaning from text is called <strong>Information Extraction</strong>.</p>
+<p><strong>Information Extraction</strong> has many applications, including business intelligence, resume harvesting, media analysis, sentiment detection, patent search, and email scanning. A particularly important area of current research involves the attempt to extract structured data out of electronically-available scientific literature, especially in the domain of biology and medicine.</p>
+<h2 id="11-information-extraction-architecture">1.1  Information Extraction Architecture<a class="headerlink" href="#11-information-extraction-architecture" title="Permanent link">#</a></h2>
+<p><a href="http://www.nltk.org/book/ch07.html#fig-ie-architecture">1.1</a> shows the architecture for a simple <strong>information extraction system</strong>. It begins by processing a document using several of the procedures discussed in <a href="http://www.nltk.org/book/ch03.html#chap-words">3</a> and <a href="http://www.nltk.org/book/ch05.html#chap-tag">5.</a>: first, the raw <strong>text</strong> of the document is split into <strong>sentences</strong> using a <strong>sentence segmenter</strong>, and each <strong>sentence</strong> is further subdivided into <strong>words</strong> using a <strong>tokenizer</strong>. Next, each sentence is tagged with <strong>part-of-speech tags</strong>, which will prove very helpful in the next step, <strong>named entity detection</strong>. In this step, we search for mentions of potentially interesting entities in each sentence. Finally, we use <strong>relation detection</strong> to search for likely relations between different entities in the text.</p>
+<p><img alt="../images/ie-architecture.png" src="http://www.nltk.org/images/ie-architecture.png" /></p>
+<p><strong>Figure 1.1</strong>: Simple Pipeline Architecture for an Information Extraction System. This system takes the raw text of a document as its input, and generates a list of <code>(entity, relation, entity)</code> tuples as its output. For example, given a document that indicates that the company Georgia-Pacific is located in Atlanta, it might generate the tuple <code>([ORG: 'Georgia-Pacific'] 'in' [LOC: 'Atlanta'])</code>.</p>
+<p>To perform the first three tasks, we can define a simple function that simply connects together NLTK's default sentence segmenter [1], word tokenizer [2], and part-of-speech tagger [3]:</p>
+<pre><code class="python">
+&gt;&gt;&gt; def ie_preprocess(document):
+...    sentences = nltk.sent_tokenize(document) [1]
+...    sentences = [nltk.word_tokenize(sent) for sent in sentences] [2]
+...    sentences = [nltk.pos_tag(sent) for sent in sentences] [3]
+</code></pre>
+
+<p>Next, in <strong>named entity detection</strong>, we segment and label the entities that might participate in interesting relations with one another. Typically, these will be definite noun phrases such as <em>the knights who say "ni"</em>, or proper names such as <em>Monty Python</em>. In some tasks it is useful to also consider indefinite nouns or noun chunks, such as every student or cats, and these do not necessarily refer to entities in the same way as definite <code>NP</code>s and proper names.</p>
+<p>Finally, in relation extraction, we search for specific patterns between pairs of entities that occur near one another in the text, and use those patterns to build tuples recording the relationships between the entities.</p>
+<h1 id="2-chunking">2  Chunking<a class="headerlink" href="#2-chunking" title="Permanent link">#</a></h1>
+<p>The basic technique we will use for entity detection is <strong>chunking</strong>, which segments and labels multi-token sequences as illustrated in <a href="http://www.nltk.org/book/ch07.html#fig-chunk-segmentation">2.1</a>. The smaller boxes show the word-level tokenization and part-of-speech tagging, while the large boxes show higher-level chunking. Each of these larger boxes is called a <strong>chunk</strong>. Like tokenization, which omits whitespace, chunking usually selects a subset of the tokens. Also like tokenization, the pieces produced by a chunker do not overlap in the source text.</p>
+<p><img alt="../images/chunk-segmentation.png" src="http://www.nltk.org/images/chunk-segmentation.png" /><strong>Figure 2.1</strong>: Segmentation and Labeling at both the Token and Chunk Levels</p>
+<p>In this section, we will explore chunking in some depth, beginning with the definition and representation of chunks. We will see regular expression and n-gram approaches to chunking, and will develop and evaluate chunkers using the CoNLL-2000 chunking corpus. We will then return in <a href="http://www.nltk.org/book/ch07.html#sec-ner">(5)</a> and <a href="http://www.nltk.org/book/ch07.html#sec-relextract">6</a> to the tasks of named entity recognition and relation extraction.</p>
+<h2 id="21-noun-phrase-chunking">2.1  Noun Phrase Chunking<a class="headerlink" href="#21-noun-phrase-chunking" title="Permanent link">#</a></h2>
+<p>We will begin by considering the task of <strong>noun phrase chunking</strong>, or <strong>NP-chunking</strong>, where we search for chunks corresponding to individual noun phrases. For example, here is some Wall Street Journal text with <code>NP</code>-chunks marked using brackets:</p>
+<blockquote>
+<p>(2)       [ The/DT market/NN ] for/IN [ system-management/NN software/NN ] for/IN [ Digital/NNP ] [ 's/POS hardware/NN ] is/VBZ fragmented/JJ enough/RB that/IN [ a/DT giant/NN ] such/JJ as/IN [ Computer/NNP Associates/NNPS ] should/MD do/VB well/RB there/RB ./.</p>
+</blockquote>
+<p>As we can see, <code>NP</code>-chunks are often smaller pieces than complete noun phrases. For example, <em>the market for system-management software for Digital's hardware</em> is a single noun phrase (containing two nested noun phrases), but it is captured in <code>NP</code>-chunks by the simpler chunk <em>the market</em>. One of the motivations for this difference is that <code>NP</code>-chunks are defined so as not to contain other <code>NP</code>-chunks. Consequently, any prepositional phrases or subordinate clauses that modify a nominal will not be included in the corresponding <code>NP</code>-chunk, since they almost certainly contain further noun phrases.</p>
+<p>One of the most useful sources of information for <code>NP</code>-chunking is <strong>part-of-speech tags</strong>. This is one of the motivations for performing <strong>part-of-speech tagging</strong> in our information extraction system. We demonstrate this approach using an example sentence that has been part-of-speech tagged in <a href="http://www.nltk.org/book/ch07.html#code-chunkex">2.2</a>. In order to create an <code>NP</code>-chunker, we will first define a <strong>chunk grammar</strong>, consisting of rules that indicate how sentences should be chunked. In this case, we will define a simple grammar with a single regular-expression rule. </p>
+<p>This rule says that an NP chunk should be formed whenever the chunker finds an optional determiner (<code>DT</code>) followed by any number of adjectives (<code>JJ</code>) and then a noun (<code>NN</code>). Using this grammar, we create a chunk parser, and test it on our example sentence. The result is a tree, which we can either print, or display graphically.</p>
+<pre><code class="python">sentence = [(&quot;the&quot;, &quot;DT&quot;), (&quot;little&quot;, &quot;JJ&quot;), (&quot;yellow&quot;, &quot;JJ&quot;), (&quot;dog&quot;, &quot;NN&quot;), (&quot;barked&quot;, &quot;VBD&quot;), (&quot;at&quot;, &quot;IN&quot;),  (&quot;the&quot;, &quot;DT&quot;), (&quot;cat&quot;, &quot;NN&quot;)]
+
+grammar = &quot;NP: {&lt;DT&gt;?&lt;JJ&gt;*&lt;NN&gt;}&quot; 
+
+cp = nltk.RegexpParser(grammar)
+result = cp.parse(sentence) 
+print(result) 
+(S
+  (NP the/DT little/JJ yellow/JJ dog/NN)
+  barked/VBD
+  at/IN
+  (NP the/DT cat/NN))
+result.draw() 
+</code></pre>
+
+<p><a href="http://www.nltk.org/book/pylisting/code_chunkex.py"><strong>Example 2.2 (code_chunkex.py)</strong></a>: <strong>Figure 2.2</strong>: Example of a Simple Regular Expression Based NP Chunker.</p>
+<p><img alt="tree_images/ch07-tree-1.png" src="http://www.nltk.org/book/tree_images/ch07-tree-1.png" /></p>
+<blockquote>
+<p>NOTE: In fact, this is a parse tree.</p>
+</blockquote>
+<h2 id="22-tag-patterns">2.2  Tag Patterns<a class="headerlink" href="#22-tag-patterns" title="Permanent link">#</a></h2>
+<p>The rules that make up a chunk grammar use <strong>tag patterns</strong> to describe sequences of tagged words. A tag pattern is a sequence of part-of-speech tags delimited using angle brackets, e.g. <code>?*</code>. Tag patterns are similar to regular expression patterns (<a href="http://www.nltk.org/book/ch03.html#sec-regular-expressions-word-patterns">3.4</a>). Now, consider the following noun phrases from the Wall Street Journal:</p>
+<pre><code>another/DT sharp/JJ dive/NN
+trade/NN figures/NNS
+any/DT new/JJ policy/NN measures/NNS
+earlier/JJR stages/NNS
+Panamanian/JJ dictator/NN Manuel/NNP Noriega/NNP
+</code></pre>
+
+<p>We can match these noun phrases using a slight refinement of the first tag pattern above, i.e. <code>?*+</code>. This will chunk any sequence of tokens beginning with an optional determiner, followed by zero or more adjectives of any type (including relative adjectives like <code>earlier/JJR</code>), followed by one or more nouns of any type. However, it is easy to find many more complicated examples which this rule will not cover:</p>
+<pre><code>his/PRP$ Mansion/NNP House/NNP speech/NN
+the/DT price/NN cutting/VBG
+3/CD %/NN to/TO 4/CD %/NN
+more/JJR than/IN 10/CD %/NN
+the/DT fastest/JJS developing/VBG trends/NNS
+'s/POS skill/NN
+</code></pre>
+
+<p>Note</p>
+<p><strong>Your Turn:</strong> Try to come up with tag patterns to cover these cases. Test them using the graphical interface <code>nltk.app.chunkparser()</code>. Continue to refine your tag patterns with the help of the feedback given by this tool.</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../../.."}})</script>
+      
+    
+  </body>
+</html>
