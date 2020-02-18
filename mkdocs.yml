@@ -1,0 +1,32 @@
+edit_uri: ''
+extra_css:
+- css/extra.css
+google_analytics:
+- UA-27795084-5
+- mkdocs.org
+markdown_extensions:
+- toc:
+    permalink: '#'
+nav:
+- Home: index.md
+- Linguistics:
+  - Introduction: Linguistics/index.md
+  - Part-of-speech: Linguistics/Part-of-speech.md
+- NLP:
+  - NLP: NLP/NLP.md
+  - Book-Natural-Language-Processing-with-Python:
+    - Introduction: NLP/Book-Natural-Language-Processing-with-Python/index.md
+  - Task-of-NLP: NLP/Task-of-NLP.md
+  - Part-of-speech-tagging:
+    - Introduction: NLP/Part-of-speech-tagging/index.md
+  - Shallow-parsing:
+    - Shallow-parsing: NLP/shallow-parsing/Shallow-parsing.md
+plugins:
+- search
+repo_url: https://github.com/dengking/NLP
+site_author: DengKing
+site_description: Project documentation with Markdown.
+site_name: NLP
+site_url: https://dengking.github.io/NLP
+theme:
+  name: material

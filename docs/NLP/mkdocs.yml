@@ -3,4 +3,4 @@ nav:
     - Book-Natural-Language-Processing-with-Python: Book-Natural-Language-Processing-with-Python
     - Task-of-NLP: Task-of-NLP.md
     - Part-of-speech-tagging: Part-of-speech-tagging
-    - Sequence-labeling
+    - Shallow-parsing: shallow-parsing
