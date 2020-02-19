@@ -1,6 +1,6 @@
 # 关于本章
 
-NLP是一门交叉学科，出来computer science外，它还涉及[Linguistics](https://en.wikipedia.org/wiki/Linguistics)（语言学）的很多内容。本章就梳理一下在从事NLP时候，需要的一些[Linguistics](https://en.wikipedia.org/wiki/Linguistics)的基础知识。
+NLP是一门交叉学科，除了computer science外，它还涉及[Linguistics](https://en.wikipedia.org/wiki/Linguistics)（语言学）的很多内容。本章就梳理一下在从事NLP时候，需要的一些[Linguistics](https://en.wikipedia.org/wiki/Linguistics)的基础知识。
 
 ## Language
 
